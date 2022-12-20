@@ -1,14 +1,19 @@
 import React, { useContext } from 'react';
+import classNames from "classnames";
 import AppContext from '../../App-Context';
 import { ColumnsChoices } from '../../components';
 
 import './Board.scss';
 
-export const renderFields = (fields, clickHandler) => {
-    return Object.keys(fields).map(field => {
+const renderFields = (fields) => {
+    return Object.keys(fields).map(fieldKey => {
         return (
-            <li className="board__field" key={field}>
-                <span className="board__circle" onClick={() => clickHandler(field)}></span>
+            <li className="board__field" key={fieldKey} data-key={fieldKey}>
+                <span
+                    className={classNames('board__circle',{
+                        [`board__circle--${fields[fieldKey]}`]: !!fields[fieldKey]
+                    })}>
+                </span>
             </li>
         )
     })
@@ -19,13 +24,13 @@ export function Board({
     onFieldClick
 }) {
     const { numberOfRows, numberOfColumns } = useContext(AppContext);
-
+    console.log(fields);
     return (
         <>
             <div className="board">
-                <ColumnsChoices />
+                <ColumnsChoices onFieldClick={onFieldClick}/>
                 <ul className="board__grid">
-                    {renderFields(fields, onFieldClick)}
+                    {renderFields(fields)}
                 </ul>
             </div>
         </>

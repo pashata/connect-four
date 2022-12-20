@@ -6,7 +6,7 @@ const preparePlayers = (count) => {
         .from({length: count}, (_, i) => i + 1)
         .reduce((players, player) => {
             players[`player${player}`] = {
-                active: false,
+                active: player === 1,
                 fields: []
             };
             return players;
@@ -20,12 +20,13 @@ export function useConnectFour({
 }) {
     const [players] = useState(preparePlayers(numberOfPlayers));
     const [fields, setFields] = useState(prepareFields(numberOfRows, numberOfColumns));
+    const activeUser = Object.keys(players).find(key => players[key].active);
 
-    const markField = (key, user) => {
+    const markField = (key) => {
         if (fields[key] !== undefined) {
             setFields({
                 ...fields,
-                [key]: user
+                [key]: activeUser
             })
         }
     }
@@ -34,5 +35,6 @@ export function useConnectFour({
         players,
         fields,
         markField,
+        activeUser
     };
 }
