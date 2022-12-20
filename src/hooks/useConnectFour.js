@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { prepareFields } from "../helpers";
+import { USER_KEY } from '../constants'
 
 const preparePlayers = (count) => {
     return Array
         .from({length: count}, (_, i) => i + 1)
         .reduce((players, player) => {
-            players[`player${player}`] = {
-                active: player === 1,
-                fields: []
-            };
+            players[player] = [];
             return players;
         },{})
 }
@@ -20,21 +18,21 @@ export function useConnectFour({
 }) {
     const [players] = useState(preparePlayers(numberOfPlayers));
     const [fields, setFields] = useState(prepareFields(numberOfRows, numberOfColumns));
-    const activeUser = Object.keys(players).find(key => players[key].active);
+    const [activeUser, setActiveUser] = useState(1);
 
     const markField = (key) => {
         if (fields[key] !== undefined) {
             setFields({
                 ...fields,
-                [key]: activeUser
-            })
+                [key]: `${USER_KEY}${activeUser}`
+            });
+            setActiveUser(activeUser >= numberOfPlayers ? 1 : activeUser+1);
         }
     }
 
     return {
         players,
         fields,
-        markField,
-        activeUser
+        markField
     };
 }

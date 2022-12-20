@@ -24,7 +24,6 @@ export function Board({
     onFieldClick
 }) {
     const { numberOfRows, numberOfColumns } = useContext(AppContext);
-    console.log(fields);
     return (
         <>
             <div className="board">
