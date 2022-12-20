@@ -9,7 +9,7 @@ export function ColumnsChoices() {
     const renderButtons = () => {
         const tasters = [];
         for (let taster = 0; taster < numberOfColumns; taster++) {
-            tasters.push(<button className="column-choices__button">{taster}</button>)
+            tasters.push(<button className="column-choices__button" key={`taster-${taster}`}>{taster}</button>)
         }
         return tasters;
     }

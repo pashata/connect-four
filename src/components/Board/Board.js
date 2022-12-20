@@ -4,21 +4,20 @@ import { ColumnsChoices } from '../../components';
 
 import './Board.scss';
 
-const renderFields = (rows, columns) => {
-    const fields = [];
-    for (let row = 0; row < rows; row++) {
-        for (let column = 0; column < columns; column++) {
-            fields.push(
-                <li className="board__field">
-                    <span className="board__circle"></span>
-                </li>
-            )
-        }
-    }
-    return fields;
+export const renderFields = (fields, clickHandler) => {
+    return Object.keys(fields).map(field => {
+        return (
+            <li className="board__field" key={field}>
+                <span className="board__circle" onClick={() => clickHandler(field)}></span>
+            </li>
+        )
+    })
 }
 
-export function Board() {
+export function Board({
+    fields,
+    onFieldClick
+}) {
     const { numberOfRows, numberOfColumns } = useContext(AppContext);
 
     return (
@@ -26,7 +25,7 @@ export function Board() {
             <div className="board">
                 <ColumnsChoices />
                 <ul className="board__grid">
-                    {renderFields(numberOfRows, numberOfColumns)}
+                    {renderFields(fields, onFieldClick)}
                 </ul>
             </div>
         </>

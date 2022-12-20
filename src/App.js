@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import AppContext from './App-Context';
 
-import { Board } from './components';
+import { Main } from './views';
 
 import './App.css';
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="connect-four" ref={appRef}>
       { !isSettingsConfirmed && (<>Please choose settings</>) }
-      { isSettingsConfirmed && <Board />}
+      { isSettingsConfirmed && <Main />}
     </div>
   );
 }
