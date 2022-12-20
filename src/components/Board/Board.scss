@@ -1,0 +1,22 @@
+@use 'src/styles/variables' as variables;
+@use 'src/styles/mixins' as mixins;
+
+.board {
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--number-of-columns), variables.$circleSize);
+    grid-gap: 10px;
+  }
+
+  &__field {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  &__circle {
+    @include mixins.generateCircle(variables.$circleSize);
+    background-color: antiquewhite;
+  }
+}

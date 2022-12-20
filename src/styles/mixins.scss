@@ -1,0 +1,6 @@
+@mixin generateCircle($size) {
+  display: block;
+  width: $size;
+  height: $size;
+  border-radius: calc($size / 2);
+}

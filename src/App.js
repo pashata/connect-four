@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { useContext, useEffect, useRef } from "react";
+import AppContext from './App-Context';
+
+import { Board } from './components';
+
 import './App.css';
 
 function App() {
+  const { isSettingsConfirmed, numberOfColumns } = useContext(AppContext);
+  const appRef = useRef();
+
+  useEffect(() => {
+    appRef.current.style.setProperty('--number-of-columns', numberOfColumns);
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="connect-four" ref={appRef}>
+      { !isSettingsConfirmed && (<>Please choose settings</>) }
+      { isSettingsConfirmed && <Board />}
     </div>
   );
 }

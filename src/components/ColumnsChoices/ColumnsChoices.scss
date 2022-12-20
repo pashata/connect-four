@@ -1,0 +1,21 @@
+@use 'src/styles/variables' as variables;
+@use 'src/styles/mixins' as mixins;
+
+.column-choices {
+  display: grid;
+  grid-template-columns: repeat(var(--number-of-columns), variables.$circleSize);
+  grid-gap: 10px;
+  margin-bottom: 15px;
+
+  &__button {
+    cursor: pointer;
+    @include mixins.generateCircle(variables.$circleSize);
+    background: none;
+    opacity: 0.3;
+    transition: all 0.1s linear;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
