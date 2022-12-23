@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import AppContext from "../../App-Context";
+import { generateFieldKey } from '../../helpers';
 
 import './ColumnsChoices.scss';
 
@@ -20,7 +21,7 @@ export function ColumnsChoices({
 
     const tasterClickHandler = (column) => {
         if (availableRows[column] > 0) {
-            onFieldClick(`${availableRows[column]}${column}`);
+            onFieldClick(generateFieldKey(column, availableRows[column]));
             setAvailableRows({
                 ...availableRows,
                 [column]: availableRows[column] - 1

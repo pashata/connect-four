@@ -11,7 +11,7 @@ const renderFields = (fields) => {
             <li className="board__field" key={fieldKey} data-key={fieldKey}>
                 <span
                     className={classNames('board__circle',{
-                        [`board__circle--${fields[fieldKey]}`]: !!fields[fieldKey]
+                        [`board__circle--player-${fields[fieldKey]}`]: !!fields[fieldKey]
                     })}>
                 </span>
             </li>

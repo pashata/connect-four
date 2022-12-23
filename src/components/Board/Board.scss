@@ -20,6 +20,10 @@
     @include mixins.generateCircle(variables.$circleSize);
     background-color: antiquewhite;
 
+    &--winner {
+      background-color: cadetblue;
+    }
+
     &--player-1 {
       background-color: brown;
     }

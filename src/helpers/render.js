@@ -1,8 +1,10 @@
+import { generateFieldKey } from './generate';
+
 export const prepareFields = (rows, columns) => {
     const fields = {};
-    for (let x = 0; x < rows; x++) {
-        for (let y = 0; y < columns; y++) {
-            fields[`${x+1}${y+1}`] = null;
+    for (let x = 1; x < rows + 1; x++) {
+        for (let y = 1; y < columns + 1; y++) {
+            fields[generateFieldKey(y,x)] = null;
         }
     }
     return fields;

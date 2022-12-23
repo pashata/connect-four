@@ -1,15 +1,5 @@
 import { useState } from 'react';
-import { prepareFields } from "../helpers";
-import { USER_KEY } from '../constants'
-
-const preparePlayers = (count) => {
-    return Array
-        .from({length: count}, (_, i) => i + 1)
-        .reduce((players, player) => {
-            players[player] = [];
-            return players;
-        },{})
-}
+import { checkWinner, prepareFields, preparePlayers } from "../helpers";
 
 export function useConnectFour({
     numberOfPlayers,
@@ -22,11 +12,22 @@ export function useConnectFour({
 
     const markField = (key) => {
         if (fields[key] !== undefined) {
-            setFields({
+            const newFields = {
                 ...fields,
-                [key]: `${USER_KEY}${activeUser}`
+                [key]: activeUser
+            };
+            const winner = checkWinner({
+                player: activeUser,
+                clickedField: key,
+                maxColumn: numberOfColumns,
+                maxRow: numberOfRows,
+                fields: newFields
             });
+            setFields(newFields);
             setActiveUser(activeUser >= numberOfPlayers ? 1 : activeUser+1);
+            if (!!winner) {
+                alert(winner);
+            }
         }
     }
 
