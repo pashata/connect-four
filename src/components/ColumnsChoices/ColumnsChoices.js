@@ -1,33 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import AppContext from "../../App-Context";
-import { generateFieldKey } from '../../helpers';
 
 import './ColumnsChoices.scss';
-
-const prepareAvailableRows = (columns, rows) => {
-    return Array
-        .from({length: columns}, (_, i) => i + 1)
-        .reduce((acc, column) => {
-            acc[column] = rows;
-            return acc;
-        },{})
-}
 
 export function ColumnsChoices({
     onFieldClick
 }) {
-    const { numberOfColumns, numberOfRows } = useContext(AppContext);
-    const [availableRows, setAvailableRows] = useState(prepareAvailableRows(numberOfColumns, numberOfRows));
-
-    const tasterClickHandler = (column) => {
-        if (availableRows[column] > 0) {
-            onFieldClick(generateFieldKey(column, availableRows[column]));
-            setAvailableRows({
-                ...availableRows,
-                [column]: availableRows[column] - 1
-            })
-        }
-    }
+    const { numberOfColumns } = useContext(AppContext);
 
     const renderButtons = () => {
         const tasters = [];
@@ -37,7 +16,7 @@ export function ColumnsChoices({
                 <button
                     className="column-choices__button"
                     key={`taster-${columnNumber}`}
-                    onClick={() => tasterClickHandler(columnNumber)}
+                    onClick={() => onFieldClick(columnNumber)}
                 >
                     {columnNumber}
                 </button>

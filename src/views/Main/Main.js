@@ -5,10 +5,11 @@ import AppContext from "../../App-Context";
 
 export function Main() {
     const context = useContext(AppContext);
-    const { fields, markField } = useConnectFour(context);
+    const { fields, markField, undoMove } = useConnectFour(context);
 
     return (
         <div className="main">
+            <button onClick={undoMove}>Undo</button>
             <Board
                 fields={fields}
                 onFieldClick={markField}
