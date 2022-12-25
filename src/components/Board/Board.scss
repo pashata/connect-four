@@ -1,6 +1,6 @@
-@use 'src/styles/variables' as variables;
-@use 'src/styles/mixins' as mixins;
-@use 'src/styles/animations';
+@use 'src/styles/utils/variables' as variables;
+@use 'src/styles/utils/mixins' as mixins;
+@use 'src/styles/utils/animations';
 
 .board {
 

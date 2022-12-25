@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 @import './reset.scss';
 
-@import 'styles/helpers.scss';
-@import 'styles/buttons.scss';
-@import 'styles/modal.scss';
-@import 'styles/forms.scss';
+@import 'styles/utils/helpers.scss';
+@import 'styles/globals';
 
 * {
   box-sizing: border-box;

@@ -1,5 +1,5 @@
-@use 'src/styles/variables' as variables;
-@use 'src/styles/mixins' as mixins;
+@use 'src/styles/utils/variables' as variables;
+@use 'src/styles/utils/mixins' as mixins;
 
 .winner-announcement {
   position: absolute;
