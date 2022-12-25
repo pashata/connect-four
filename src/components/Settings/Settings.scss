@@ -1,13 +1,13 @@
-@use 'src/styles/utils/variables' as variables;
-@use 'src/styles/utils/mixins' as mixins;
-@use 'src/styles/utils/animations';
+@use "src/styles/utils/variables" as variables;
+@use "src/styles/utils/mixins" as mixins;
+@use "src/styles/utils/animations";
 
 .settings {
   flex-direction: column;
   position: absolute;
   padding: 2rem 3rem 4rem;
 
-  @include mixins.neumorphicContainer();
+  @include mixins.neumorphicContainer;
 
   &__overlay {
     background-color: variables.$main-bg;

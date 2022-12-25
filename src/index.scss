@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
-@import './reset.scss';
-
-@import 'styles/utils/helpers.scss';
-@import 'styles/globals';
+@import "https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap";
+@import "./reset";
+@import "styles/utils/helpers";
+@import "styles/globals";
 
 * {
   box-sizing: border-box;
 }
 
-html, #root {
+html,
+#root {
   height: 100%;
 }
 
@@ -16,12 +16,17 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
-  font-family: 'Oswald', sans-serif;
+  font-family: Oswald, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
     monospace;
 }

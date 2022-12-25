@@ -1,5 +1,5 @@
-@use 'src/styles/utils/variables' as variables;
-@use 'src/styles/utils/mixins' as mixins;
+@use "src/styles/utils/variables" as variables;
+@use "src/styles/utils/mixins" as mixins;
 
 .winner-announcement {
   position: absolute;
@@ -7,7 +7,7 @@
   min-height: 50%;
   min-width: 70%;
 
-  @include mixins.neumorphicContainer();
+  @include mixins.neumorphicContainer;
 
   &__overlay {
     background-color: variables.$main-bg;

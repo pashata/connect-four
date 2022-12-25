@@ -1,8 +1,8 @@
-@use 'src/styles/utils/variables' as variables;
+@use "src/styles/utils/variables" as variables;
 
 .btn {
   cursor: pointer;
-  font-family: 'Oswald', sans-serif;
+  font-family: Oswald, sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -12,13 +12,15 @@
   border-radius: 10px;
   background: variables.$main-bg;
   border: variables.$main-border;
-  transition: all .3s;
-  box-shadow: 6px 6px 12px #c5c5c5,
-  -6px -6px 12px #ffffff;
+  transition: all 0.3s;
+  box-shadow:
+    6px 6px 12px #c5c5c5,
+    -6px -6px 12px #fff;
 }
 
 .btn:active {
   color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5,
-  inset -4px -4px 12px #ffffff;
+  box-shadow:
+    inset 4px 4px 12px #c5c5c5,
+    inset -4px -4px 12px #fff;
 }

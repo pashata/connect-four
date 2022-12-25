@@ -1,9 +1,8 @@
-@use 'src/styles/utils/variables' as variables;
-@use 'src/styles/utils/mixins' as mixins;
-@use 'src/styles/utils/animations';
+@use "src/styles/utils/variables" as variables;
+@use "src/styles/utils/mixins" as mixins;
+@use "src/styles/utils/animations";
 
 .board {
-
   &__grid {
     display: grid;
     grid-template-columns: repeat(var(--number-of-columns), variables.$circleSize);
@@ -18,52 +17,58 @@
 
   &__circle {
     @include mixins.generateCircle(variables.$circleSize);
-    cursor: pointer;
 
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     border-radius: 50%;
-    box-shadow: variables.$neumorphic-left-shadow,
-                variables.$neumorphic-right-shadow,
-                variables.$neumorphic-inset-left-empty-shadow,
-                variables.$neumorphic-inset-right-empty-shadow;
+    box-shadow:
+      variables.$neumorphic-left-shadow,
+      variables.$neumorphic-right-shadow,
+      variables.$neumorphic-inset-left-empty-shadow,
+      variables.$neumorphic-inset-right-empty-shadow;
     transition: box-shadow 0.2s linear;
 
-    &:after {
-      content: '';
+    &::after {
+      content: "";
       position: absolute;
       height: 80%;
       width: 80%;
       background-color: transparent;
       border-radius: 50%;
-      box-shadow: variables.$neumorphic-inset-left-shadow,
-                  variables.$neumorphic-inset-right-shadow;
+      box-shadow:
+        variables.$neumorphic-inset-left-shadow,
+        variables.$neumorphic-inset-right-shadow;
       transition: box-shadow 0.2s linear;
     }
 
     &--hovered {
-      box-shadow: variables.$neumorphic-left-empty-shadow,
-                  variables.$neumorphic-right-empty-shadow,
-                  variables.$neumorphic-inset-left-shadow,
-                  variables.$neumorphic-inset-right-shadow;
+      box-shadow:
+        variables.$neumorphic-left-empty-shadow,
+        variables.$neumorphic-right-empty-shadow,
+        variables.$neumorphic-inset-left-shadow,
+        variables.$neumorphic-inset-right-shadow;
 
-      &:after {
-        box-shadow: variables.$neumorphic-inset-left-empty-shadow,
-                    variables.$neumorphic-inset-right-empty-shadow;
+      &::after {
+        box-shadow:
+          variables.$neumorphic-inset-left-empty-shadow,
+          variables.$neumorphic-inset-right-empty-shadow;
       }
     }
 
     &--selected {
-      box-shadow: variables.$neumorphic-inset-left-shadow,
-                  variables.$neumorphic-inset-right-shadow;
+      box-shadow:
+        variables.$neumorphic-inset-left-shadow,
+        variables.$neumorphic-inset-right-shadow;
 
-      &:after {
+      &::after {
         height: 40%;
         width: 40%;
-        box-shadow: variables.$neumorphic-inset-left-empty-shadow,
-                    variables.$neumorphic-inset-right-empty-shadow;
+        box-shadow:
+          variables.$neumorphic-inset-left-empty-shadow,
+          variables.$neumorphic-inset-right-empty-shadow;
         animation-name: slideDown;
         animation-duration: 0.2s;
       }
@@ -74,39 +79,42 @@
     }
 
     &--player-1 {
-      &:after {
+      &::after {
         background-color: #d63031;
       }
     }
 
     &--player-2 {
-      &:after {
+      &::after {
         background-color: #0984e3;
       }
     }
 
     &--player-3 {
-      &:after {
+      &::after {
         background-color: #00b894;
       }
     }
 
     &--player-4 {
-      &:after {
+      &::after {
         background-color: #fdcb6e;
       }
     }
 
     &--hidden {
-      box-shadow: variables.$neumorphic-inset-left-empty-shadow,
-      variables.$neumorphic-inset-right-empty-shadow;
+      box-shadow:
+        variables.$neumorphic-inset-left-empty-shadow,
+        variables.$neumorphic-inset-right-empty-shadow;
 
-      &:after {
+      &::after {
         background-color: transparent;
-        box-shadow: variables.$neumorphic-inset-left-empty-shadow,
-                    variables.$neumorphic-inset-right-empty-shadow;
-        transition: box-shadow 0.2s linear,
-                    background-color 0.2s linear;
+        box-shadow:
+          variables.$neumorphic-inset-left-empty-shadow,
+          variables.$neumorphic-inset-right-empty-shadow;
+        transition:
+          box-shadow 0.2s linear,
+          background-color 0.2s linear;
       }
     }
   }
