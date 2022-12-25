@@ -8,7 +8,7 @@ import AppContext from './App-Context';
 import './App.scss';
 
 function App() {
-  const [isSettingsConfirmed, setIsSettingsConfirmed] = useState(true);
+  const [isSettingsConfirmed, setIsSettingsConfirmed] = useState(false);
     const context = useContext(AppContext);
     const {
         winner, fields, isNewGame,
