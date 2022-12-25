@@ -7,7 +7,6 @@ export const AppProvider = (props) => {
     const [numberOfPlayers, setNumberOfPlayers] = useState(2);
     const [numberOfRows, setNumberOfRows] = useState(6);
     const [numberOfColumns, setNumberOfColumns] = useState(7);
-    const [isSettingsConfirmed, setIsSettingsConfirmed] = useState(true);
 
     return (
         <AppContext.Provider value={{
@@ -16,9 +15,7 @@ export const AppProvider = (props) => {
             numberOfRows,
             setNumberOfRows,
             numberOfColumns,
-            setNumberOfColumns,
-            isSettingsConfirmed,
-            setIsSettingsConfirmed
+            setNumberOfColumns
         }}>
             {children}
         </AppContext.Provider>

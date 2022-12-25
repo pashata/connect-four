@@ -1,0 +1,19 @@
+@use 'src/styles/variables' as variables;
+
+.connect-four {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: variables.$main-bg;
+
+  &__navigation {
+    padding: 2rem 0 0;
+  }
+
+  &__footer {
+    padding: 1rem 0;
+  }
+}

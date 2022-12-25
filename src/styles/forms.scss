@@ -1,0 +1,8 @@
+@use 'src/styles/variables' as variables;
+
+.input {
+  border: none;
+  padding: 12px 25px;
+  font-size: 17px;
+  box-shadow: variables.$neumorphic-inset-left-shadow, variables.$neumorphic-inset-right-shadow;
+}

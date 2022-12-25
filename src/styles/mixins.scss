@@ -1,6 +1,15 @@
+@use 'src/styles/variables' as variables;
+
 @mixin generateCircle($size) {
   display: block;
   width: $size;
   height: $size;
   border-radius: calc($size / 2);
+}
+
+@mixin neumorphicContainer() {
+  border-radius: 10px;
+  background: variables.$main-bg;
+  border: variables.$main-border;
+  box-shadow: variables.$neumorphic-left-shadow, variables.$neumorphic-right-shadow;
 }

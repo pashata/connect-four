@@ -1,1 +1,16 @@
 $circleSize: 80px;
+
+$main-text-color: #090909;
+$main-color: #e8e8e8;
+
+$main-bg: $main-color;
+$main-border: 1px solid $main-color;
+
+$neumorphic-left-shadow: 6px 6px 12px #c5c5c5;
+$neumorphic-right-shadow: -6px -6px 12px #ffffff;
+
+$neumorphic-inset-left-shadow: inset -5px -5px 9px rgba(255,255,255,0.45);
+$neumorphic-inset-right-shadow: inset 5px 5px 9px rgba(94,104,121,0.3);
+
+$font-weight-normal: 400;
+$font-weight-bold: 700;

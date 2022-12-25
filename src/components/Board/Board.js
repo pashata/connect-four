@@ -1,35 +1,45 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import classNames from "classnames";
-import AppContext from '../../App-Context';
-import { ColumnsChoices } from '../../components';
 
 import './Board.scss';
-
-const renderFields = (fields) => {
-    return Object.keys(fields).map(fieldKey => {
-        return (
-            <li className="board__field" key={fieldKey} data-key={fieldKey}>
-                <span
-                    className={classNames('board__circle',{
-                        [`board__circle--player-${fields[fieldKey]}`]: !!fields[fieldKey]
-                    })}>
-                </span>
-            </li>
-        )
-    })
-}
+import AppContext from "../../App-Context";
 
 export function Board({
     fields,
     onFieldClick
 }) {
-    const { numberOfRows, numberOfColumns } = useContext(AppContext);
+    const { numberOfColumns } = useContext(AppContext);
+    const [hoveredColumn, setHoveredColumn] = useState(null);
+    const boardRef = useRef();
+
+    useEffect(() => {
+        boardRef.current.style.setProperty('--number-of-columns', numberOfColumns);
+    }, [numberOfColumns])
+
     return (
         <>
-            <div className="board">
-                <ColumnsChoices onFieldClick={onFieldClick}/>
-                <ul className="board__grid">
-                    {renderFields(fields)}
+            <div className="board" ref={boardRef}>
+                <ul className="board__grid" onMouseLeave={() => setHoveredColumn(null)}>
+                    {
+                        Object.keys(fields).map(fieldKey => {
+                            const column = fieldKey.split('-')[0];
+                            const isSelected = !!fields[fieldKey];
+                            return (
+                                <li className="board__field" key={fieldKey} data-key={fieldKey}>
+                                    <span
+                                        className={classNames('board__circle',{
+                                            'board__circle--hovered': column === hoveredColumn && !isSelected,
+                                            [`board__circle--player-${fields[fieldKey]}`]: isSelected,
+                                            'board__circle--selected': isSelected
+                                        })}
+                                        onClick={() => onFieldClick(column)}
+                                        onMouseOver={() => setHoveredColumn(column)}
+                                    >
+                                    </span>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
         </>

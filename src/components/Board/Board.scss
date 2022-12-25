@@ -6,7 +6,7 @@
   &__grid {
     display: grid;
     grid-template-columns: repeat(var(--number-of-columns), variables.$circleSize);
-    grid-gap: 10px;
+    grid-gap: 20px;
   }
 
   &__field {
@@ -16,19 +16,61 @@
   }
 
   &__circle {
-    cursor: pointer;
     @include mixins.generateCircle(variables.$circleSize);
-    background-color: antiquewhite;
+    cursor: pointer;
+    //background: variables.$main-bg;
+    //border: variables.$main-border;
+    //box-shadow: 6px 6px 12px #c5c5c5,
+    //-6px -6px 12px #ffffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+
+    &:after {
+      content: '';
+      position: absolute;
+      height: 80%;
+      width: 80%;
+      background-color: transparent;
+      border-radius: 50%;
+      box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+    }
+
+    &--hovered {
+      background-color: aliceblue;
+
+      &:after {
+        background: variables.$main-bg;
+      }
+    }
+
+    &--selected {
+      box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+
+      &:after {
+        height: 40%;
+        width: 40%;
+        box-shadow: none;
+      }
+    }
 
     &--winner {
       background-color: cadetblue;
     }
 
     &--player-1 {
-      background-color: brown;
+      &:after {
+        background-color: brown;
+      }
     }
     &--player-2 {
-      background-color: darkblue;
+      &:after {
+        background-color: darkblue;
+      }
     }
   }
 }

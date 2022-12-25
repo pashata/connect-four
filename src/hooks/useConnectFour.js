@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import {checkWinner, prepareFields, preparePlayers, prepareAvailableFields, generateFieldKey} from "../helpers";
+import { useState, useEffect } from 'react';
+import {
+    checkWinner, prepareFields, preparePlayers, prepareAvailableFields, generateFieldKey
+} from "../helpers";
 
 export function useConnectFour({
     numberOfPlayers,
@@ -62,10 +64,23 @@ export function useConnectFour({
         }
     }
 
+    const resetGame = () => {
+        setWinner(null);
+        setSteps([]);
+        setActiveUser(1);
+        setFields(prepareFields(numberOfRows, numberOfColumns));
+        setAvailableFields(prepareAvailableFields(numberOfColumns, numberOfRows));
+    }
+
+    useEffect(resetGame, [numberOfColumns, numberOfRows, numberOfPlayers])
+
     return {
         players,
         fields,
+        winner,
+        isNewGame: steps.length <= 0,
         markField,
-        undoMove
+        undoMove,
+        resetGame
     };
 }
