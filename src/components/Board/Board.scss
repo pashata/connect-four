@@ -1,5 +1,6 @@
 @use 'src/styles/variables' as variables;
 @use 'src/styles/mixins' as mixins;
+@use 'src/styles/animations';
 
 .board {
 
@@ -71,27 +72,42 @@
     &--winner {
       background-color: cadetblue;
     }
+
     &--player-1 {
       &:after {
-        background-color: brown;
+        background-color: #d63031;
       }
     }
+
     &--player-2 {
       &:after {
-        background-color: darkblue;
+        background-color: #0984e3;
       }
     }
-  }
-}
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-200px);
-  }
+    &--player-3 {
+      &:after {
+        background-color: #00b894;
+      }
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    &--player-4 {
+      &:after {
+        background-color: #fdcb6e;
+      }
+    }
+
+    &--hidden {
+      box-shadow: variables.$neumorphic-inset-left-empty-shadow,
+      variables.$neumorphic-inset-right-empty-shadow;
+
+      &:after {
+        background-color: transparent;
+        box-shadow: variables.$neumorphic-inset-left-empty-shadow,
+                    variables.$neumorphic-inset-right-empty-shadow;
+        transition: box-shadow 0.2s linear,
+                    background-color 0.2s linear;
+      }
+    }
   }
 }

@@ -29,7 +29,11 @@ function App() {
             onUndoMove={undoMove}
             onOpenSettings={() => setIsSettingsConfirmed(false)}
         />
-        <Board fields={fields} onFieldClick={markField} />
+        <Board
+            isHidden={!isSettingsConfirmed}
+            fields={fields}
+            onFieldClick={markField}
+        />
         { !!winner && (<WinnerAnnouncement id={winner} onResetGame={resetGame}/>) }
         <Footer className="connect-four__footer"/>
     </div>

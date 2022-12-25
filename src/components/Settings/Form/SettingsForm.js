@@ -45,6 +45,8 @@ export function SettingsForm({ onHideSettingsForm }) {
                     className="settings-form__input input"
                     type="number"
                     value={playersInput}
+                    min={2}
+                    max={4}
                     onChange={(e) => setPlayersInput(e.target.value)}
                 />
             </div>

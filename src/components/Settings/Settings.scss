@@ -1,5 +1,6 @@
 @use 'src/styles/variables' as variables;
 @use 'src/styles/mixins' as mixins;
+@use 'src/styles/animations';
 
 .settings {
   flex-direction: column;
@@ -10,6 +11,8 @@
 
   &__overlay {
     background-color: variables.$main-bg;
+    opacity: 0;
+    animation: show 0ms 0.3s linear forwards;
   }
 
   &__title {

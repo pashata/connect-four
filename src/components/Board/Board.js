@@ -5,6 +5,7 @@ import './Board.scss';
 import AppContext from "../../App-Context";
 
 export function Board({
+    isHidden,
     fields,
     onFieldClick
 }) {
@@ -30,7 +31,8 @@ export function Board({
                                         className={classNames('board__circle',{
                                             'board__circle--hovered': column === hoveredColumn && !isSelected,
                                             [`board__circle--player-${fields[fieldKey]}`]: isSelected,
-                                            'board__circle--selected': isSelected
+                                            'board__circle--selected': isSelected,
+                                            'board__circle--hidden': isHidden,
                                         })}
                                         onClick={() => onFieldClick(column)}
                                         onMouseOver={() => setHoveredColumn(column)}
