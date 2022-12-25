@@ -18,17 +18,17 @@
   &__circle {
     @include mixins.generateCircle(variables.$circleSize);
     cursor: pointer;
-    //background: variables.$main-bg;
-    //border: variables.$main-border;
-    //box-shadow: 6px 6px 12px #c5c5c5,
-    //-6px -6px 12px #ffffff;
 
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     border-radius: 50%;
-    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+    box-shadow: variables.$neumorphic-left-shadow,
+                variables.$neumorphic-right-shadow,
+                variables.$neumorphic-inset-left-empty-shadow,
+                variables.$neumorphic-inset-right-empty-shadow;
+    transition: box-shadow 0.2s linear;
 
     &:after {
       content: '';
@@ -37,31 +37,40 @@
       width: 80%;
       background-color: transparent;
       border-radius: 50%;
-      box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+      box-shadow: variables.$neumorphic-inset-left-shadow,
+                  variables.$neumorphic-inset-right-shadow;
+      transition: box-shadow 0.2s linear;
     }
 
     &--hovered {
-      background-color: aliceblue;
+      box-shadow: variables.$neumorphic-left-empty-shadow,
+                  variables.$neumorphic-right-empty-shadow,
+                  variables.$neumorphic-inset-left-shadow,
+                  variables.$neumorphic-inset-right-shadow;
 
       &:after {
-        background: variables.$main-bg;
+        box-shadow: variables.$neumorphic-inset-left-empty-shadow,
+                    variables.$neumorphic-inset-right-empty-shadow;
       }
     }
 
     &--selected {
-      box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+      box-shadow: variables.$neumorphic-inset-left-shadow,
+                  variables.$neumorphic-inset-right-shadow;
 
       &:after {
         height: 40%;
         width: 40%;
-        box-shadow: none;
+        box-shadow: variables.$neumorphic-inset-left-empty-shadow,
+                    variables.$neumorphic-inset-right-empty-shadow;
+        animation-name: slideDown;
+        animation-duration: 0.2s;
       }
     }
 
     &--winner {
       background-color: cadetblue;
     }
-
     &--player-1 {
       &:after {
         background-color: brown;
@@ -72,5 +81,17 @@
         background-color: darkblue;
       }
     }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
