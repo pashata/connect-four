@@ -7,7 +7,7 @@
   min-height: 50%;
   min-width: 70%;
 
-  @include mixins.neumorphicContainer;
+  @include mixins.neumorphic-container;
 
   &__overlay {
     background-color: variables.$main-bg;

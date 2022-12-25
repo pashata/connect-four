@@ -1,13 +1,13 @@
 @use "src/styles/utils/variables" as variables;
 
-@mixin generateCircle($size) {
+@mixin generate-circle($size) {
   display: block;
   width: $size;
   height: $size;
   border-radius: calc($size / 2);
 }
 
-@mixin neumorphicContainer() {
+@mixin neumorphic-container() {
   border-radius: 10px;
   background: variables.$main-bg;
   border: variables.$main-border;
