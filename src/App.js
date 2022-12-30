@@ -29,7 +29,7 @@ function App() {
         />
         <Navigation
             className="connect-four__navigation"
-            hasWinner={!!winner}
+            showUndoButton={!isNewGame}
             onUndoMove={undoMove}
             onOpenSettings={() => setIsSettingsConfirmed(false)}
         />

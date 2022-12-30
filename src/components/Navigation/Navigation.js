@@ -5,14 +5,16 @@ import './Navigation.scss';
 
 export function Navigation({
     className,
-    hasWinner,
+    showUndoButton,
     onUndoMove,
     onOpenSettings
 }) {
     return (
         <div className={classNames('navigation', className)}>
-            {!hasWinner && (<button className="navigation__button btn" onClick={onUndoMove}>Undo</button>)}
-            <button className="navigation__button btn" onClick={onOpenSettings}>Settings</button>
+            <button className={classNames('navigation__button navigation__button--undo btn', {
+                'btn--hidden': !showUndoButton
+            })} onClick={onUndoMove}>Undo</button>
+            <button className="navigation__button navigation__button--settings btn" onClick={onOpenSettings}>Settings</button>
         </div>
     )
 }
