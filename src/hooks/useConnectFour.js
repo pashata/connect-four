@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
-    checkWinner, prepareFields, preparePlayers, prepareAvailableFields, generateFieldKey
+    checkWinner, prepareFields, prepareAvailableFields, generateFieldKey
 } from "../helpers";
 
 export function useConnectFour({
@@ -8,7 +8,6 @@ export function useConnectFour({
     numberOfRows,
     numberOfColumns
 }) {
-    const [players] = useState(preparePlayers(numberOfPlayers));
     const [fields, setFields] = useState(prepareFields(numberOfRows, numberOfColumns));
     const [activeUser, setActiveUser] = useState(1);
     const [steps, setSteps] = useState([]);
@@ -75,7 +74,6 @@ export function useConnectFour({
     useEffect(resetGame, [numberOfColumns, numberOfRows, numberOfPlayers])
 
     return {
-        players,
         fields,
         winner,
         isNewGame: steps.length <= 0,
