@@ -1,4 +1,4 @@
-import { generateFieldKey } from "./generate";
+import { generateFieldKey, getColumnAndRowFromFieldKey } from "./generate";
 const REQUIRED_FIELDS = 4;
 
 const limitNumberWithinRange = (num, max) => Math.min(Math.max(num, 1), max);
@@ -10,7 +10,10 @@ export const checkWinner = ({
     maxRow,
     fields
 }) => {
-    const [clickedColumn, clickedRow] = clickedField.split('-');
+    const {
+        column: clickedColumn,
+        row: clickedRow
+    } = getColumnAndRowFromFieldKey(clickedField);
     const RANGE_FIELDS = REQUIRED_FIELDS - 1;
     const columnStart = limitNumberWithinRange(parseInt(clickedColumn) - RANGE_FIELDS, maxColumn );
     const columnEnd = limitNumberWithinRange(parseInt(clickedColumn) + RANGE_FIELDS, maxColumn);

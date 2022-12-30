@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import classNames from "classnames";
 
-import './Board.scss';
 import AppContext from "../../App-Context";
+import { getColumnFromFieldKey } from "../../helpers";
+
+import './Board.scss';
 
 export function Board({
     isHidden,
@@ -23,7 +25,7 @@ export function Board({
                 <ul className="board__grid" onMouseLeave={() => setHoveredColumn(null)}>
                     {
                         Object.keys(fields).map(fieldKey => {
-                            const column = fieldKey.split('-')[0];
+                            const column = getColumnFromFieldKey(fieldKey);
                             const isSelected = !!fields[fieldKey];
                             return (
                                 <li className="board__field" key={fieldKey} data-key={fieldKey}>

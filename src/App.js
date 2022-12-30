@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {
     Board, Navigation, Settings, WinnerAnnouncement, Footer
 } from './components';
@@ -14,6 +14,10 @@ function App() {
         winner, fields, isNewGame,
         markField, undoMove, resetGame
     } = useConnectFour(context);
+
+    useEffect(() => {
+        console.log('Fucking bitch');
+    }, [])
 
   return (
     <div className="connect-four">
